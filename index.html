@@ -250,18 +250,74 @@
             font-size: 0.85rem;
         }
 
-        /* MOBILE RESPONSIVE ADJUSTMENTS */
-        @media (max-width: 768px) {
-            .book-stage { height: 680px; }
-            .open-book { padding: 6px; }
-            .messy-polaroid { width: 140px; padding: 5px 5px 8px; }
-            .messy-polaroid img { height: 105px; }
-            .messy-polaroid.large-cover { width: 240px; }
-            .messy-polaroid.large-cover img { height: 170px; }
-            .messy-scrap { max-width: 150px; font-size: 1rem; padding: 6px 8px; }
-            .scrappy-spotify-large { width: 250px; padding: 12px; }
-            .signoff-box { font-size: 1.7rem; padding: 10px; }
-        }
+       /* --- MOBILE RESPONSIVE LAYOUT FIXES --- */
+@media (max-width: 768px) {
+  /* Give the body full touch flexibility */
+  body {
+    padding: 10px 6px;
+  }
+
+  /* Unclump the main app container */
+  .app-container {
+    padding: 12px 10px;
+    border-radius: 16px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Convert 2-column book spread into a single scrollable vertical layout */
+  .book-spread {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Reset fixed dimensions on scrapbook pages so content isn't squished */
+  .scrapbook-page {
+    min-height: auto;
+    padding: 14px 10px;
+  }
+
+  /* Scale polaroid photo frames cleanly */
+  .polaroid-frame {
+    padding: 10px 10px 16px 10px;
+  }
+
+  .polaroid-photo-container {
+    height: 240px; /* Fixed proportional height to prevent crushing */
+    max-height: 45vh;
+  }
+
+  /* Allow handwritten note scraps to expand based on text content */
+  .paper-scrap {
+    min-height: 120px;
+    padding: 12px;
+  }
+
+  /* Ensure text inputs and notes wrap without overflow */
+  .scrap-textarea, 
+  .caption-input, 
+  .spotify-input {
+    font-size: 15px !important; /* Prevents iOS auto-zoom on input tap */
+  }
+
+  /* Adjust header & toolbar button wrapping */
+  .top-toolbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  /* Keep music player responsive */
+  .spotify-container iframe {
+    height: 80px;
+  }
+}
     </style>
 </head>
 <body class="is-recipient">
